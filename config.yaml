@@ -1,0 +1,45 @@
+# ====== EDIT THIS FILE ======
+min_score: 70            # only alert when LLM fit score >= this
+max_alerts_per_run: 25
+alert_on_first_run: false  # false = first run just records existing jobs, no flood
+llm_model: claude-haiku-5-5
+gmail_lookback_days: 2
+
+# Titles must contain at least one of these (case-insensitive)
+include_title_keywords: ["business analyst", "business analysis", "product analyst", "product owner", "technical business analyst", "functional analyst", "functional consultant", "business transformation", "process analyst", "process improvement", "solutions analyst", "implementation analyst", "implementation consultant", "servicenow", "ai business analyst", "ai product", "data analyst", "systems analyst", "requirements", "product operations", "service delivery", "business systems analyst", "associate product manager", "product manager"]
+exclude_title_keywords: ["intern", "trainee", "fresher", "junior", "director", "vp ", "vice president", "head of", "sales", "account executive", "recruiter"]
+skills_keywords: ["business analysis", "brd", "user stories", "uat", "servicenow", "power bi", "sql", "jira", "agile", "process mapping", "prompt engineering", "llm", "product"]   # used only if no ANTHROPIC_API_KEY
+
+remote_only: true
+allowed_region_phrases: ["india", "apac", "asia", "worldwide", "anywhere", "work from anywhere", "wfa", "global", "emea", "remote", "any location", "international"]
+blocked_region_phrases: ["us only", "usa only", "u.s. only", "united states only", "canada only",
+                         "uk only", "europe only", "eu only", "must reside in", "us-based", "us based",
+                         "authorized to work in the us"]
+
+# Free-text preferences passed to the LLM
+preferences: |
+  Candidate is a Business Analyst with 10 years' experience (mid-to-senior), based in India (IST).
+  Wants fully remote roles in business analysis, business transformation, product analysis/ownership,
+  AI-enabled products (LLM evaluation, prompt engineering), ServiceNow/ITSM, or data/BI-heavy analyst work.
+  Must be workable from India (no US/EU-only residency or work-authorization requirements; up to ~4 hrs
+  overlap with UK/US hours is fine). Avoid sales, pure software engineering, and very junior or director+ roles.
+
+# Boards with free APIs/RSS
+boards: [remotive, remoteok, weworkremotely, himalayas, jobicy, arbeitnow, adzuna]   # adzuna needs free keys (optional)
+search_queries: ["business analyst", "product analyst", "business analysis", "product owner"]
+
+# Auto-discover more companies: any Greenhouse/Lever/Ashby/SmartRecruiters link found in the jobs above
+# is added to the watch list (company_state.json) and its career page is polled from then on.
+discover_companies: true
+
+# Starter list of remote-friendly employers (ATS slugs). Dead/wrong slugs are skipped silently,
+# and the first poll of any company only records its backlog (no alert flood).
+companies:
+  greenhouse: [gitlab, cloudflare, mozilla, wikimedia, grammarly, webflow, figma, datadog, mongodb, elastic,
+               twilio, okta, dropbox, vercel, remotecom, hubspot, airtable, asana, coursera, duolingo,
+               stripe, reddit, discord, pinterest, instacart, gusto, lattice, samsara, fivetran, dbtlabs,
+               toptal, thoughtworks, zendesk, smartsheet, squarespace, sproutsocial, buffer, invisionapp]
+  lever: [palantir, netlify, kraken, welocalize, spotify, plaid, mistral, aircall, outreach, zoopla]
+  ashby: [openai, ramp, notion, linear, deel, supabase, posthog, zapier, retool, mercury, clickhouse,
+          cohere, perplexity, runway, loom, watershed, vanta, harvey, mistralai, replit]
+  smartrecruiters: [Visa, BoschGroup, ServiceNow, Square, Experian]
