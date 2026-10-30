@@ -1,5 +1,5 @@
 # ====== EDIT THIS FILE ======
-min_score: 70            # only alert when LLM fit score >= this
+min_score: 50            # only alert when LLM fit score >= this
 max_alerts_per_run: 25
 alert_on_first_run: false  # false = first run just records existing jobs, no flood
 llm_model: claude-haiku-5-5
